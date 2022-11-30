@@ -16,6 +16,7 @@ const promptUser = () => {
       type: "input",
       name: "name",
       message: "What is your name? (Required)",
+      // do not undestand
       validate: (nameInput) => {
         if (nameInput) {
           return true;
@@ -39,12 +40,28 @@ const promptUser = () => {
       },
     },
     {
+      type: "confirm",
+      name: "confirmAbout",
+      message:
+        'Would you like to enter some information about yourself for an "About" section?',
+      default: true,
+    },
+    {
       type: "input",
       name: "about",
       message: "Provide some information about yourself:",
+      // do not undestand
+      when: ({ confirmAbout }) => {
+        if (confirmAbout) {
+          return true;
+        } else {
+          return false;
+        }
+      },
     },
   ]);
 };
+// do not undestand
 const promptProject = (portfolioData) => {
   // If there's no 'projects' array property, create one
   if (!portfolioData.projects) {
@@ -56,6 +73,7 @@ const promptProject = (portfolioData) => {
 Add a New Project
 =================
 `);
+  // do not undestand
   return inquirer.prompt([
     {
       type: "input",
